@@ -5,6 +5,6 @@ Aws.config[:s3] = {
   :access_key_id =>  ENV['AWW_AWS_KEY'],
   :secret_access_key =>  ENV['AWW_AWS_SECRET']
 }
-$s3 = Aws::S3.new
-$sns = Aws::SNS::Client.new
-$dynamo_db = Aws::DynamoDB::Client.new
+# $s3 = Aws::S3::Client.new
+# $sns = Aws::SNS::Client.new
+# $dynamo_db = Aws::DynamoDB::Client.new

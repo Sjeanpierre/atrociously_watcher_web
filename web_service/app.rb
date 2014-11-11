@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'yaml'
 require 'active_support/all'
-
+$app_dir = File.dirname(__FILE__)
 lib_dirs = %w(
   models/**
   workers/**
