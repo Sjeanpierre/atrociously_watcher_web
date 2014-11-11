@@ -7,9 +7,9 @@ class User < OpenStruct
   def self.create(user_name, lat = nil, long = nil)
     user = User.find(user_name) rescue nil
     if user
-      user.lat = lat
-      user.long = long
-      user.save
+      user.lat = lat if lat.present?
+      user.long = long if long.present?
+      user.save if lat.present? || long.present?
     else
       user = User.new(user_name: user_name, lat: lat, long: long)
       user.save
