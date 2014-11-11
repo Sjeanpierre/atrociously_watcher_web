@@ -37,6 +37,21 @@ module ODynamoDb
       self.class_variable_get(:@@dynamo_after_save) << fn_name
     end
 
+    def all
+      res = $dynamo_db.scan(
+          :table_name => self.dynamo_table_name
+      )
+      res.items.map! {|item| self.new(item)}
+    end
+
+    def first
+      all.first
+    end
+
+    def last
+      all.last
+    end
+
     def find(id)
       res = $dynamo_db.get_item(
         table_name: self.dynamo_table_name, 
