@@ -2,6 +2,7 @@
 require 'yaml'
 require 'active_support/all'
 $app_dir = File.dirname(__FILE__)
+$redis_config = YAML.load_file("#{File.dirname(__FILE__)}/config/redis.yml")[$rack_env]
 lib_dirs = %w(
   models/**
   workers/**

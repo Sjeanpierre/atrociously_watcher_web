@@ -4,6 +4,11 @@ gem 'sinatra'
 gem 'activesupport'
 gem 'tux'
 gem 'sidekiq'
+gem 'foreman'
+gem 'thin'
+gem 'redis'
+gem 'hiredis'
+gem 'redis-namespace'
 
 #debugging
 gem 'pry'

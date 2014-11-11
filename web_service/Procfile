@@ -1,0 +1,3 @@
+
+web: thin start -R config.ru -p 3000
+workers: sidekiq -e development -C config/sidekiq.yml -r ./app.rb

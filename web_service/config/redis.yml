@@ -1,0 +1,14 @@
+development:
+  sidekiq:
+    host: localhost
+    port: 6379
+
+staging:
+  sidekiq:
+    host: localhost
+    port: 6379
+
+production:
+  sidekiq:
+    host: localhost
+    port: 6379

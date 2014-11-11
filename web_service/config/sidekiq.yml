@@ -1,0 +1,11 @@
+# Note Changes in concurrency require and update to the database pool sizes
+# They can be found in:
+# config/mongoid.yml
+# config/initializers/sidekiq.rb
+# config/database.yml
+---
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency:  20
+:queues:
+ - [default, 1]

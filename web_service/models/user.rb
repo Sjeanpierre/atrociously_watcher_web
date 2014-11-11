@@ -4,10 +4,7 @@ class User < OpenStruct
   dynamo_attribute :lat, :n
   dynamo_attribute :long, :n
 
-  before_save :test
-
-  def test
-    puts 'abc123'
-    true
+  def self.test(msg)
+    puts msg
   end
 end
