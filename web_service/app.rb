@@ -4,9 +4,6 @@ require 'active_support/all'
 
 lib_dirs = %w(
   models/**
-  payloads/**
-  handlers/**
-  dispatchers/**
   workers/**
 )
 lib_dirs.each do |dir|
