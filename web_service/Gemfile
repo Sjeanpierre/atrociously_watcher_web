@@ -7,3 +7,6 @@ gem 'pry'
 
 gem 'aws-sdk', '1.29.0'
 gem 'aws-sdk-core', git: 'git://github.com/aws/aws-sdk-core-ruby.git'
+
+#messaging
+gem 'twilio-ruby', '~> 3.12'
