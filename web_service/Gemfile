@@ -3,8 +3,12 @@ source 'http://rubygems.org/'
 gem 'sinatra'
 gem 'activesupport'
 gem 'tux'
+gem 'sidekiq'
+
+#debugging
 gem 'pry'
 
+#AWS
 gem 'aws-sdk', '1.29.0'
 gem 'aws-sdk-core', git: 'git://github.com/aws/aws-sdk-core-ruby.git'
 

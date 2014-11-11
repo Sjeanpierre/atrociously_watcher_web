@@ -1,4 +1,4 @@
-require 'aws-sdk'
+require 'aws-sdk-core'
 
 opts = {
   :region => ENV['AWW_REGION'],
@@ -6,6 +6,5 @@ opts = {
   :secret_access_key =>  ENV['AWW_AWS_SECRET']
 }
 
-# $s3 = Aws::S3::Client.new
-# $sns = Aws::SNS::Client.new
+
 $dynamo_db = Aws::DynamoDB::Client.new(opts)
