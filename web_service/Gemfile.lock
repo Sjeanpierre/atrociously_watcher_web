@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/aws/aws-sdk-core-ruby.git
+  revision: 0af9980a4270e2ea3026b5eea7f1573f726c24c6
+  specs:
+    aws-sdk-core (2.0.7)
+      builder (~> 3.0)
+      jmespath (~> 1.0)
+      multi_json (~> 1.0)
+      multi_xml (~> 0.5)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -7,10 +17,22 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    aws-sdk (1.29.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bond (0.5.1)
+    builder (3.2.2)
     i18n (0.6.11)
+    jmespath (1.0.1)
+      multi_json (~> 1.0)
     json (1.8.1)
+    mini_portile (0.6.1)
     minitest (5.4.2)
+    multi_json (1.10.1)
+    multi_xml (0.5.5)
+    nokogiri (1.6.4.1)
+      mini_portile (~> 0.6.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -37,11 +59,14 @@ GEM
       sinatra (>= 1.2.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    uuidtools (2.1.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   activesupport
+  aws-sdk (= 1.29.0)
+  aws-sdk-core!
   sinatra
   tux
