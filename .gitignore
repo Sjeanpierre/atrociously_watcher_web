@@ -20,3 +20,4 @@ config/secrets.yml
 bower.json
 /.idea
 web_service/.env
+web_service/tmp/pids/sidekiq.pid
