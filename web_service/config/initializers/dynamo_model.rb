@@ -1,6 +1,29 @@
 module ODynamoDb
+  def self.included(base)
+    base.class_variable_set(:@@dynamo_db_fields, Hash.new)
+    base.extend(ClassMethods)
+  end
+
+  module ClassMethods
+    def dynamo_attribute(name, type)
+      dynamo_db_fields = self.class_variable_get(:@@dynamo_db_fields)
+      dynamo_db_fields[name] = type
+    end
+  end
+
+  def dynamo_attributes
+    attrs = Hash.new
+    dynamo_db_fields = self.class.class_variable_get(:@@dynamo_db_fields)
+    dynamo_db_fields.each do |name, type|
+      val = Hash.new
+      val[type] = self.send(name)
+      attrs[name] = val
+    end
+    return attrs
+  end
+
   def self.configure_options(klass, options = {})
-    [:dynamo_table_name].each do |name|
+    [:dynamo_table_name, :dynamo_hash_key].each do |name|
       klass.class_eval %Q{
         def self.#{name.to_s}=(v)
           @@#{name.to_s} = v
