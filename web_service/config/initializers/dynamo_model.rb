@@ -1,6 +1,8 @@
 module ODynamoDb
   def self.included(base)
     base.class_variable_set(:@@dynamo_db_fields, Hash.new)
+    base.class_variable_set(:@@dynamo_before_save, Array.new)
+    base.class_variable_set(:@@dynamo_after_save, Array.new)
     base.extend(ClassMethods)
   end
 
@@ -25,6 +27,14 @@ module ODynamoDb
     def dynamo_attribute(name, type)
       dynamo_db_fields = self.class_variable_get(:@@dynamo_db_fields)
       dynamo_db_fields[name] = type
+    end
+
+    def before_save(fn_name)
+      self.class_variable_get(:@@dynamo_before_save) << fn_name
+    end
+
+    def after_save(fn_name)
+      self.class_variable_get(:@@dynamo_after_save) << fn_name
     end
 
     def find(id)
@@ -54,6 +64,12 @@ module ODynamoDb
   end
 
   def save
+    self.class.class_variable_get(:@@dynamo_before_save).each do |fn|
+      res = self.send(fn) rescue true
+      unless res
+        raise "#{fn} returned false"
+      end
+    end
     attrs = dynamo_attributes
     unless hash_key = attrs[self.class.dynamo_hash_key.to_s].present?
       raise 'No Key value to save with.'
@@ -62,6 +78,9 @@ module ODynamoDb
       table_name: self.class.dynamo_table_name,
       item: attrs
     )
+    self.class.class_variable_get(:@@dynamo_after_save).each do |fn|
+      res = self.send(fn)
+    end
   end
 end
 

@@ -3,4 +3,11 @@ class User < OpenStruct
   dynamo_attribute :user_name, :s
   dynamo_attribute :lat, :n
   dynamo_attribute :long, :n
+
+  before_save :test
+
+  def test
+    puts 'abc123'
+    true
+  end
 end
