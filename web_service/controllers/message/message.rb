@@ -1,5 +1,5 @@
 post '/receive_message' do
-  MessageReceiver.new(params).process
+  MessageReceiver.delay.process(params)
   status 200
   body ''
 end
